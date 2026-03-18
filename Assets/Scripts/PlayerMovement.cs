@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     public float Speed;
-
+    public float JumpHeight;
     void Start()
     {
        
@@ -18,8 +18,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3 (moveX, 0.7f, moveZ);
+        float moveY = Input.GetAxis("Jump");
+        Vector3 movement = new Vector3 (moveX, moveY, moveZ);
         rb.AddForce (movement * Speed);
+
+     
+        
+
     }
 
 
