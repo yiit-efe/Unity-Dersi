@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 243226951}
   - component: {fileID: 243226950}
   - component: {fileID: 243226954}
-  - component: {fileID: 243226953}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -213,19 +212,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &243226953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243226949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb237013091826499b600ed985a3849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMovement: {fileID: 375325870}
 --- !u!114 &243226954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,8 +268,8 @@ GameObject:
   - component: {fileID: 375325866}
   - component: {fileID: 375325865}
   - component: {fileID: 375325864}
+  - component: {fileID: 375325868}
   - component: {fileID: 375325869}
-  - component: {fileID: 375325870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -380,34 +366,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &375325869
-Rigidbody:
+--- !u!143 &375325868
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375325861}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &375325870
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &375325869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,8 +403,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17032f0be3468f3438558c2e856e518f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  JumpHeight: 2
+  moveSpeed: 5
+  jumpHeight: 2
+  gravity: -30
+  fallMultiplier: 2.5
+  jumpCooldown: 1
+  groundCheck: {fileID: 1531769895}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &1531769890
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +425,6 @@ GameObject:
   - component: {fileID: 1531769894}
   - component: {fileID: 1531769893}
   - component: {fileID: 1531769898}
-  - component: {fileID: 1531769897}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -503,39 +494,12 @@ Transform:
   m_GameObject: {fileID: 1531769890}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.11964846, z: 10.76}
-  m_LocalScale: {x: 10.175482, y: -0.18592, z: 36.17113}
+  m_LocalPosition: {x: 0.0099997, y: 0.11964846, z: 10.76}
+  m_LocalScale: {x: 24.810877, y: -0.18592, z: 36.17113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1531769897
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531769890}
-  serializedVersion: 4
-  m_Mass: 2
-  m_Drag: 5
-  m_AngularDrag: 5
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 78
-  m_CollisionDetection: 0
 --- !u!65 &1531769898
 BoxCollider:
   m_ObjectHideFlags: 0
