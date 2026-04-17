@@ -404,9 +404,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpHeight: 2
-  gravity: -30
-  fallMultiplier: 2.5
+  jumpHeight: 3
+  gravity: -75
+  fallMultiplier: 10
+  lowJumpMultiplier: 2
   jumpCooldown: 1
   groundCheck: {fileID: 1531769895}
   groundDistance: 0.4
